@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bangtu Information Technology — Global Technology, AI & Business Solutions</title>
+<meta name="description" content="Bangtu Information Technology: IT electronics, AI software, apparel. Global technology solutions." />
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --gray-50: #fafafa;
+  --gray-100: #f4f4f5;
+  --gray-200: #e4e4e7;
+  --gray-300: #d4d4d8;
+  --gray-400: #a1a1aa;
+  --gray-500: #71717a;
+  --gray-600: #52525b;
+  --gray-700: #3f3f46;
+  --gray-800: #27272a;
+  --gray-900: #18181b;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --radius: 8px;
+  --shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.04);
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--white); color: var(--gray-900); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; height: auto; }
+button { font-family: inherit; cursor: pointer; }
+input, select, textarea, button { font-family: inherit; font-size: 16px; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+
+/* ===== NAV ===== */
+.nav { background: var(--white); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 1rem; }
+.nav-logo { font-size: 1.5rem; font-weight: 700; color: var(--black); letter-spacing: -0.5px; }
+.nav-logo:hover { text-decoration: none; }
+.nav-menu { display: flex; gap: 1.5rem; align-items: center; list-style: none; }
+.nav-menu a { color: var(--gray-700); font-size: 0.9rem; font-weight: 500; }
+.nav-menu a.active { color: var(--accent); }
+.nav-toggle { display: none; background: none; border: none; font-size: 1.5rem; }
+
+/* ===== BUTTONS ===== */
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: .625rem 1.25rem; border-radius: var(--radius); border: 1px solid transparent; font-weight: 500; transition: all .15s; }
+.btn:hover { text-decoration: none; }
+.btn-primary { background: var(--black); color: var(--white); }
+.btn-primary:hover { background: var(--gray-800); }
+.btn-secondary { background: var(--white); color: var(--black); border-color: var(--gray-300); }
+.btn-secondary:hover { background: var(--gray-50); }
+.btn-sm { padding: .375rem .75rem; font-size: .85rem; }
+.btn-lg { padding: .75rem 1.5rem; font-size: 1rem; }
+.btn-ghost { background: none; color: var(--gray-600); }
+.btn-danger { background: var(--danger); color: var(--white); }
+.btn-success { background: var(--success); color: var(--white); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+
+/* ===== HERO ===== */
+.hero { background: var(--black); color: var(--white); padding: 5rem 1rem 4rem; text-align: center; }
+.hero-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; letter-spacing: -1px; margin-bottom: 1rem; }
+.hero-sub { font-size: 1.1rem; color: var(--gray-300); max-width: 600px; margin: 0 auto 2rem; }
+.hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ===== SECTIONS ===== */
+.section { padding: 4rem 1rem; }
+.section-gray { background: var(--gray-50); }
+.section-title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 3rem; letter-spacing: -0.5px; }
+
+/* ===== GRID ===== */
+.grid { display: grid; gap: 1.5rem; }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+/* ===== CARD ===== */
+.card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); }
+.card-icon { font-size: 2rem; margin-bottom: .75rem; }
+.card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: .5rem; }
+.card p { color: var(--gray-600); font-size: .9rem; margin-bottom: 1rem; }
+.card-link { font-size: .85rem; font-weight: 500; }
+
+/* ===== FORM ===== */
+.form { display: flex; flex-direction: column; gap: 1rem; }
+.form label { display: flex; flex-direction: column; gap: .25rem; font-size: .85rem; font-weight: 500; color: var(--gray-700); }
+.form input, .form select, .form textarea { padding: .625rem; border: 1px solid var(--gray-300); border-radius: var(--radius); background: var(--white); font-size: 16px; }
+.form input:focus, .form select:focus, .form textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
+.form textarea { min-height: 100px; resize: vertical; }
+
+/* ===== FOOTER ===== */
+.footer { background: var(--gray-900); color: var(--gray-300); padding: 3rem 1rem 1.5rem; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+.footer h4 { color: var(--white); margin-bottom: .75rem; }
+.footer a { color: var(--gray-400); }
+.footer-bottom { border-top: 1px solid var(--gray-700); padding-top: 1.5rem; text-align: center; font-size: .85rem; }
+
+/* ===== PAGE SYSTEM ===== */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ===== CRM ===== */
+.crm-topbar { background: var(--gray-900); color: var(--white); padding: .75rem 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; }
+.crm-topbar .left { font-weight: 600; }
+.crm-topbar .right { display: flex; align-items: center; gap: 1rem; font-size: .85rem; }
+.crm-layout { display: flex; min-height: calc(100vh - 120px); }
+.crm-sidebar { width: 220px; background: var(--gray-50); border-right: 1px solid var(--gray-200); padding: 1rem; flex-shrink: 0; }
+.crm-sidebar a { display: block; padding: .5rem .75rem; border-radius: var(--radius); color: var(--gray-700); font-size: .9rem; margin-bottom: .25rem; }
+.crm-sidebar a:hover { background: var(--gray-200); text-decoration: none; }
+.crm-sidebar a.active { background: var(--black); color: var(--white); }
+.crm-main { flex: 1; padding: 1.5rem; overflow-x: auto; }
+.crm-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.stat-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 1rem; text-align: center; }
+.stat-card .num { font-size: 1.75rem; font-weight: 700; }
+.stat-card .label { font-size: .75rem; color: var(--gray-500); margin-top: .25rem; }
+.pipeline-bar { display: flex; gap: .25rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.pipeline-stage { flex: 1; min-width: 80px; background: var(--gray-100); border-radius: var(--radius); padding: .5rem; text-align: center; font-size: .7rem; }
+.pipeline-stage .count { font-weight: 700; font-size: 1rem; }
+.pipeline-stage.won { background: #dcfce7; }
+.pipeline-stage.lost { background: #fee2e2; }
+
+/* ===== TABLE ===== */
+table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+th, td { text-align: left; padding: .5rem .75rem; border-bottom: 1px solid var(--gray-200); }
+th { background: var(--gray-50); font-weight: 600; color: var(--gray-700); position: sticky; top: 0; }
+tr:hover td { background: var(--gray-50); }
+.badge { display: inline-block; padding: .125rem .5rem; border-radius: 999px; font-size: .7rem; font-weight: 500; }
+.badge-new { background: #dbeafe; color: #1e40af; }
+.badge-contacted { background: #fef3c7; color: #92400e; }
+.badge-qualified { background: #e9d5ff; color: #7c3aed; }
+.badge-won { background: #dcfce7; color: #166534; }
+.badge-lost { background: #fee2e2; color: #991b1b; }
+.badge-sent { background: #dbeafe; color: #1e40af; }
+
+/* ===== MODAL ===== */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 200; align-items: center; justify-content: center; padding: 1rem; }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--white); border-radius: var(--radius); padding: 1.5rem; max-width: 500px; width: 100%; max-height: 90vh; overflow-y: auto; }
+.modal h3 { margin-bottom: 1rem; }
+.modal-actions { display: flex; gap: .5rem; justify-content: flex-end; margin-top: 1rem; }
+
+/* ===== AUTH ===== */
+.auth-page { background: var(--gray-50); min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+.auth-box { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 2rem; max-width: 400px; width: 100%; box-shadow: var(--shadow); }
+.auth-box h1 { font-size: 1.5rem; margin-bottom: .25rem; }
+.auth-box .muted { color: var(--gray-500); margin-bottom: 1.5rem; }
+
+/* ===== UTILITY ===== */
+.muted { color: var(--gray-500); }
+.small { font-size: .8rem; }
+.error-text { color: var(--danger); font-size: .85rem; }
+.success-text { color: var(--success); font-size: .85rem; }
+.text-center { text-align: center; }
+.mt-1 { margin-top: .5rem; }
+.mt-2 { margin-top: 1rem; }
+.mb-1 { margin-bottom: .5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.hidden { display: none; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .nav-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--gray-200); flex-direction: column; padding: 1rem; box-shadow: var(--shadow); }
+  .nav-menu.open { display: flex; }
+  .nav-toggle { display: block; }
+  .crm-layout { flex-direction: column; }
+  .crm-sidebar { width: 100%; display: flex; overflow-x: auto; padding: .5rem; gap: .25rem; }
+  .crm-sidebar a { margin-bottom: 0; white-space: nowrap; }
+  .hero { padding: 3rem 1rem; }
+  .section { padding: 2.5rem 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav" id="main-nav">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo" onclick="showPage('home')">Bangtu</a>
+    <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="#" onclick="showPage('home')" class="nav-link active" data-page="home">Home</a></li>
+      <li><a href="#" onclick="showPage('products')" class="nav-link" data-page="products">Products</a></li>
+      <li><a href="#" onclick="showPage('ai')" class="nav-link" data-page="ai">AI Solutions</a></li>
+      <li><a href="#" onclick="showPage('about')" class="nav-link" data-page="about">About</a></li>
+      <li><a href="#" onclick="showPage('contact')" class="nav-link" data-page="contact">Contact</a></li>
+      <li><a href="#" onclick="showPage('quote')" class="nav-link" data-page="quote">Request a Quote</a></li>
+      <li><a href="#" onclick="showPage('login')" class="nav-link" data-page="login" id="nav-login">CRM Login</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== PAGE: HOME ===== -->
+<div id="page-home" class="page active">
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">Global Technology, AI & Business Solutions</h1>
+      <p class="hero-sub">Connecting businesses, technology and global opportunities.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary btn-lg" onclick="showPage('products')">Explore Solutions</a>
+        <a href="#" class="btn btn-secondary btn-lg" onclick="showPage('quote')">Request a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Our Core Businesses</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-icon">💻</div>
+          <h3>IT & Electronics</h3>
+          <p>Computers, laptops, tablets, smartphones, smartwatches and related technology products for international markets.</p>
+          <a href="#" class="card-link" onclick="showPage('products')">Learn more →</a>
+        </div>
+        <div class="card">
+          <div class="card-icon">🤖</div>
+          <h3>AI Software & Digital Solutions</h3>
+          <p>AI automation, AI sales, customer service, content productivity and customized AI solutions.</p>
+          <a href="#" class="card-link" onclick="showPage('ai')">Learn more →</a>
+        </div>
+        <div class="card">
+          <div class="card-icon">👕</div>
+          <h3>Apparel & Lifestyle</h3>
+          <p>Selected apparel and consumer products for international markets.</p>
+          <a href="#" class="card-link" onclick="showPage('products')">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== PAGE: PRODUCTS ===== -->
+<div id="page-products" class="page">
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Products</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>IT & Electronics</h3>
+          <p>Computers, Laptops, iPads, Tablets, Smartphones, Smartwatches, Accessories</p>
+          <p class="muted small">Specifications, MOQ, Warranty and Delivery available on request.</p>
+        </div>
+        <div class="card">
+          <h3>AI Software</h3>
+          <p>AI Automation, AI Sales, AI Customer Service, AI Content, Business Productivity, Custom AI Solutions</p>
+          <p class="muted small">Tailored to your business requirements.</p>
+        </div>
+        <div class="card">
+          <h3>Apparel & Lifestyle</h3>
+          <p>Apparel, Consumer Products, Lifestyle Products</p>
+          <p class="muted small">Selected products for international markets.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== PAGE: AI SOLUTIONS ===== -->
+<div id="page-ai" class="page">
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">AI Solutions</h2>
+      <div class="grid grid-2">
+        <div class="card"><h3>AI Automation</h3><p>Automate repetitive business processes and improve operational efficiency.</p></div>
+        <div class="card"><h3>AI Sales</h3><p>Use AI to support customer acquisition, lead generation and sales workflows.</p></div>
+        <div class="card"><h3>AI Customer Service</h3><p>AI-powered customer communication and support solutions.</p></div>
+        <div class="card"><h3>AI Content</h3><p>AI-assisted content creation, product descriptions, marketing materials and business communication.</p></div>
+        <div class="card"><h3>Business Productivity</h3><p>AI tools to streamline daily operations and team collaboration.</p></div>
+        <div class="card"><h3>Custom AI Solutions</h3><p>Customized AI solutions based on specific business requirements.</p></div>
+      </div>
+      <div class="text-center mt-2"><a href="#" class="btn btn-primary" onclick="showPage('quote')">Discuss Your Business</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== PAGE: ABOUT ===== -->
+<div id="page-about" class="page">
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">About Bangtu</h2>
+      <div class="card">
+        <p>Bangtu Information Technology focuses on international technology, AI software and business solutions.</p>
+        <p class="mt-1">We aim to connect technology, products and businesses across international markets.</p>
+        <h3 class="mt-2">Core Business Areas</h3>
+        <ul class="mt-1">
+          <li>Technology Products</li>
+          <li>AI Software</li>
+          <li>Digital Business Solutions</li>
+          <li>International Business Development</li>
+          <li>Cross-border Services</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== PAGE: CONTACT ===== -->
+<div id="page-contact" class="page">
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Get in Touch</h3>
+          <p><strong>Company:</strong> Bangtu Information Technology / 邦途信息技术</p>
+          <p><strong>Email:</strong> <a href="mailto:Bqh199809@outlook.com">Bqh199809@outlook.com</a></p>
+          <p><strong>WhatsApp:</strong> <a href="https://wa.me/8613265866702" target="_blank">+86 132 6586 6702</a></p>
+          <p><strong>Location:</strong> [Business Address]</p>
+        </div>
+        <div class="card">
+          <h3>Quick Actions</h3>
+          <p><a href="#" class="btn btn-primary" onclick="showPage('quote')">Request a Quote</a></p>
+          <p class="mt-1"><a href="#" class="btn btn-secondary" onclick="showPage('login')">CRM Login</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== PAGE: QUOTE ===== -->
+<div id="page-quote" class="page">
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <h2 class="section-title">Request a Quote</h2>
+      <div class="card">
+        <form class="form" id="quote-form" onsubmit="submitQuote(event)">
+          <label>Name *<input name="name" required></label>
+          <label>Company *<input name="company" required></label>
+          <label>Country / Region
+            <select name="country">
+              <option value="">Select...</option>
+              <option>Australia</option><option>United States</option><option>United Kingdom</option>
+              <option>Canada</option><option>China</option><option>Singapore</option><option>Other</option>
+            </select>
+          </label>
+          <label>Email *<input name="email" type="email" required></label>
+          <label>WhatsApp<input name="whatsapp"></label>
+          <label>Product / Service *
+            <select name="product" required>
+              <option value="">Select...</option>
+              <option>IT & Electronics</option><option>AI Software</option><option>Apparel</option><option>General Inquiry</option>
+            </select>
+          </label>
+          <label>Quantity<input name="quantity"></label>
+          <label>Target Market<input name="targetMarket"></label>
+          <label>Message<textarea name="message"></textarea></label>
+          <button type="submit" class="btn btn-primary">Submit Request</button>
+        </form>
+        <div id="quote-success" class="hidden mt-2 text-center">
+          <p class="success-text">✓ Thank you. Your request has been received. Our team will contact you shortly.</p>
+          <p class="small muted" id="quote-ref"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== PAGE: LOGIN ===== -->
+<div id="page-login" class="page">
+  <div class="auth-page" style="min-height:80vh;">
+    <div class="auth-box">
+      <h1>Bangtu CRM</h1>
+      <p class="muted">Sign in to continue</p>
+      <form class="form" onsubmit="doLogin(event)">
+        <label>Username<input name="username" required autocomplete="username"></label>
+        <label>Password<input name="password" type="password" required autocomplete="current-password"></label>
+        <button class="btn btn-primary" type="submit">Login</button>
+        <p id="login-error" class="error-text"></p>
+      </form>
+      <p class="muted small mt-1">Default: admin / admin123</p>
+      <p class="small"><a href="#" onclick="showPage('home')">← Back to website</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE: CRM ===== -->
+<div id="page-crm" class="page">
+  <div class="crm-topbar">
+    <span class="left">Bangtu CRM</span>
+    <div class="right">
+      <span id="crm-user"></span>
+      <a href="#" class="btn btn-sm btn-ghost" onclick="logout()" style="color:var(--gray-300);">Logout</a>
+    </div>
+  </div>
+  <div class="crm-layout">
+    <div class="crm-sidebar" id="crm-sidebar">
+      <a href="#" class="active" onclick="crmView('dashboard',this)">📊 Dashboard</a>
+      <a href="#" onclick="crmView('leads',this)">🔥 Leads</a>
+      <a href="#" onclick="crmView('companies',this)">🏢 Companies</a>
+      <a href="#" onclick="crmView('contacts',this)">👤 Contacts</a>
+      <a href="#" onclick="crmView('deals',this)">💰 Deals</a>
+      <a href="#" onclick="crmView('tasks',this)">📋 Tasks</a>
+      <a href="#" onclick="crmView('quotes',this)">📄 Quotes</a>
+      <a href="#" onclick="crmView('orders',this)">📦 Orders</a>
+      <a href="#" onclick="crmView('payments',this)">💳 Payments</a>
+      <a href="#" onclick="crmView('comms',this)">💬 Comms</a>
+    </div>
+    <div class="crm-main" id="crm-main">
+      <!-- CRM content injected here -->
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer" id="main-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><h4>Bangtu</h4><p class="muted">Global Technology, AI & Business Solutions</p></div>
+      <div><h4>Contact</h4><p><a href="mailto:Bqh199809@outlook.com">Bqh199809@outlook.com</a></p><p><a href="https://wa.me/8613265866702" target="_blank">WhatsApp +86 132 6586 6702</a></p></div>
+      <div><h4>Links</h4><p><a href="#" onclick="showPage('products')">Products</a></p><p><a href="#" onclick="showPage('ai')">AI Solutions</a></p><p><a href="#" onclick="showPage('quote')">Request a Quote</a></p><p><a href="#" onclick="showPage('login')">CRM</a></p></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2024 Bangtu Information Technology. All rights reserved.</p></div>
+  </div>
+</footer>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="modal"><div class="modal" id="modal-content"></div></div>
+
+<script>
+// ===== DATA LAYER (LocalStorage) =====
+const DB = {
+  prefix: 'bt_',
+  read(c) { const r = localStorage.getItem(this.prefix + c); return r ? JSON.parse(r) : []; },
+  write(c, d) { localStorage.setItem(this.prefix + c, JSON.stringify(d)); },
+  uid(p) { return p + '_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6); },
+  // Companies
+  getCompanies() { return this.read('companies'); },
+  saveCompany(c) { const d = this.read('companies'); if (!c.id) c.id = this.uid('cmp'); d.push(c); this.write('companies', d); return c; },
+  // Contacts
+  getContacts() { return this.read('contacts'); },
+  saveContact(c) { const d = this.read('contacts'); if (!c.id) c.id = this.uid('con'); d.push(c); this.write('contacts', d); return c; },
+  // Leads
+  getLeads() { return this.read('leads'); },
+  saveLead(l) { const d = this.read('leads'); if (!l.id) l.id = this.uid('lea'); d.push(l); this.write('leads', d); return l; },
+  updateLead(id, data) { const d = this.read('leads'); const i = d.findIndex(x => x.id === id); if (i > -1) { d[i] = { ...d[i], ...data }; this.write('leads', d); } },
+  // Deals
+  getDeals() { return this.read('deals'); },
+  saveDeal(d) { const dd = this.read('deals'); if (!d.id) d.id = this.uid('deal'); dd.push(d); this.write('deals', dd); return d; },
+  // Tasks
+  getTasks() { return this.read('tasks'); },
+  saveTask(t) { const d = this.read('tasks'); if (!t.id) t.id = this.uid('tsk'); d.push(t); this.write('tasks', d); return t; },
+  // Quotes
+  getQuotes() { return this.read('quotes'); },
+  saveQuote(q) { const d = this.read('quotes'); if (!q.id) q.id = this.uid('quo'); d.push(q); this.write('quotes', d); return q; },
+  // Orders
+  getOrders() { return this.read('orders'); },
+  saveOrder(o) { const d = this.read('orders'); if (!o.id) o.id = this.uid('ord'); d.push(d); this.write('orders', o); return o; },
+  // Payments
+  getPayments() { return this.read('payments'); },
+  savePayment(p) { const d = this.read('payments'); if (!p.id) p.id = this.uid('pay'); d.push(p); this.write('payments', d); return p; },
+  // Comms
+  getComms() { return this.read('communications'); },
+  saveComm(c) { const d = this.read('communications'); if (!c.id) c.id = this.uid('com'); d.push(c); this.write('communications', d); return c; },
+  // Auth
+  getUsers() { return JSON.parse(localStorage.getItem('bt_users') || '[]'); },
+  saveUsers(u) { localStorage.setItem('bt_users', JSON.stringify(u)); },
+  getSession() { return JSON.parse(localStorage.getItem('bt_session') || 'null'); },
+  setSession(s) { localStorage.setItem('bt_session', JSON.stringify(s)); },
+  clearSession() { localStorage.removeItem('bt_session'); }
+};
+
+// Seed default admin
+(function seed() {
+  const u = DB.getUsers();
+  if (u.length === 0) { DB.saveUsers([{ username: 'admin', password: 'admin123', role: 'Admin' }]); }
+})();
+
+// ===== NAVIGATION =====
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + name);
+  if (target) target.classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  const navLink = document.querySelector(`[data-page="${name}"]`);
+  if (navLink) navLink.classList.add('active');
+  document.getElementById('nav-menu').classList.remove('open');
+  window.scrollTo(0, 0);
+
+  if (name === 'crm') {
+    const s = DB.getSession();
+    if (!s) { showPage('login'); return false; }
+    document.getElementById('main-nav').style.display = 'none';
+    document.getElementById('main-footer').style.display = 'none';
+    document.getElementById('crm-user').textContent = s.username + ' (' + s.role + ')';
+    crmView('dashboard');
+  } else {
+    document.getElementById('main-nav').style.display = '';
+    document.getElementById('main-footer').style.display = '';
+  }
+  return true;
+}
+
+function toggleMenu() { document.getElementById('nav-menu').classList.toggle('open'); }
+
+// ===== QUOTE SUBMIT =====
+function submitQuote(e) {
+  e.preventDefault();
+  const f = document.getElementById('quote-form');
+  const data = {
+    name: f.name.value.trim(), company: f.company.value.trim(), country: f.country.value,
+    email: f.email.value.trim(), whatsapp: f.whatsapp.value.trim(), product: f.product.value,
+    quantity: f.quantity.value, targetMarket: f.targetMarket.value, message: f.message.value.trim()
+  };
+  // Create lead
+  DB.saveLead({
+    leadName: data.name + ' - ' + data.product, company: data.company, contact: data.name,
+    source: 'Website Quote', country: data.country, product: data.product, status: 'New Lead',
+    owner: '', nextFollowUp: '', notes: data.message
+  });
+  // Create company if new
+  const companies = DB.getCompanies();
+  if (!companies.find(c => c.name && c.name.toLowerCase() === data.company.toLowerCase())) {
+    DB.saveCompany({ name: data.company, country: data.country, website: '', industry: '', contact: data.name, status: 'Prospect', notes: 'From website' });
+  }
+  // Create contact if new
+  const contacts = DB.getContacts();
+  if (!contacts.find(c => c.email === data.email)) {
+    DB.saveContact({ name: data.name, company: data.company, position: '', email: data.email, whatsapp: data.whatsapp, linkedin: '', country: data.country, notes: 'Website quote' });
+  }
+  f.style.display = 'none';
+  document.getElementById('quote-success').classList.remove('hidden');
+  document.getElementById('quote-ref').textContent = 'Reference: LEAD_' + Date.now().toString().slice(-6);
+}
+
+// ===== LOGIN =====
+function doLogin(e) {
+  e.preventDefault();
+  const f = e.target;
+  const users = DB.getUsers();
+  const u = users.find(x => x.username === f.username.value && x.password === f.password.value);
+  if (u) {
+    DB.setSession({ username: u.username, role: u.role, at: Date.now() });
+    showPage('crm');
+  } else {
+    document.getElementById('login-error').textContent = 'Invalid credentials';
+  }
+}
+
+function logout() { DB.clearSession(); showPage('home'); }
+
+// ===== CRM VIEWS =====
+function crmView(view, el) {
+  if (el) { document.querySelectorAll('#crm-sidebar a').forEach(a => a.classList.remove('active')); el.classList.add('active'); }
+  const main = document.getElementById('crm-main');
+  switch (view) {
+    case 'dashboard': main.innerHTML = crmDashboard(); break;
+    case 'leads': main.innerHTML = crmList('leads', 'Leads', ['leadName','company','status','country','product']); break;
+    case 'companies': main.innerHTML = crmList('companies', 'Companies', ['name','country','industry','status']); break;
+    case 'contacts': main.innerHTML = crmList('contacts', 'Contacts', ['name','company','email','whatsapp']); break;
+    case 'deals': main.innerHTML = crmList('deals', 'Deals', ['dealName','company','amount','stage','probability']); break;
+    case 'tasks': main.innerHTML = crmList('tasks', 'Tasks', ['task','customer','dueDate','priority','status']); break;
+    case 'quotes': main.innerHTML = crmList('quotes', 'Quotes', ['quoteNumber','customer','total','status']); break;
+    case 'orders': main.innerHTML = crmList('orders', 'Orders', ['orderNumber','customer','amount','status']); break;
+    case 'payments': main.innerHTML = crmList('payments', 'Payments', ['customer','amount','status','date']); break;
+    case 'comms': main.innerHTML = crmList('communications', 'Communications', ['type','customer','subject','date']); break;
+  }
+}
+
+function crmDashboard() {
+  const leads = DB.getLeads(); const deals = DB.getDeals(); const tasks = DB.getTasks();
+  const quotes = DB.getQuotes(); const orders = DB.getOrders(); const payments = DB.getPayments();
+  const stages = ['New Lead','Contacted','Replied','Qualified','Quotation','Negotiation','Won','Lost'];
+  const today = new Date().toISOString().slice(0,10);
+  let pipelineHtml = stages.map(s => `<div class="pipeline-stage ${s==='Won'?'won':s==='Lost'?'lost':''}"><div class="count">${leads.filter(l=>l.status===s).length}</div><div>${s}</div></div>`).join('');
+  return `<h2>Dashboard</h2>
+    <div class="crm-stats">
+      <div class="stat-card"><div class="num">${leads.filter(l=>l.status==='New Lead').length}</div><div class="label">New Leads</div></div>
+      <div class="stat-card"><div class="num">${tasks.filter(t=>t.status!=='Done'&&t.dueDate<=today).length}</div><div class="label">Follow-ups Due</div></div>
+      <div class="stat-card"><div class="num">${deals.filter(d=>!['Won','Lost'].includes(d.stage)).length}</div><div class="label">Active Deals</div></div>
+      <div class="stat-card"><div class="num">${quotes.filter(q=>q.status==='Sent').length}</div><div class="label">Quotations</div></div>
+      <div class="stat-card"><div class="num">${orders.filter(o=>o.status==='Confirmed').length}</div><div class="label">Orders</div></div>
+      <div class="stat-card"><div class="num">${payments.filter(p=>p.status==='Paid').length}</div><div class="label">Payments</div></div>
+    </div>
+    <h3>Sales Pipeline</h3>
+    <div class="pipeline-bar">${pipelineHtml}</div>
+    <h3>Recent Leads</h3>
+    <table><tr><th>Name</th><th>Company</th><th>Status</th><th>Product</th></tr>
+    ${leads.slice(-5).reverse().map(l=>`<tr><td>${l.leadName||''}</td><td>${l.company||''}</td><td><span class="badge badge-new">${l.status||'New Lead'}</span></td><td>${l.product||''}</td></tr>`).join('')}
+    </table>`;
+}
+
+function crmList(collection, title, fields) {
+  const data = DB['get' + collection.charAt(0).toUpperCase() + collection.slice(0, -1) + 's'] ? DB['get' + collection.charAt(0).toUpperCase() + collection.slice(0, -1) + 's']() : DB.read(collection);
+  let html = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;"><h2>${title}</h2><button class="btn btn-primary btn-sm" onclick="addRecord('${collection}')">+ Add</button></div>`;
+  if (data.length === 0) { html += '<p class="muted">No records yet.</p>'; return html; }
+  html += '<table><tr>' + fields.map(f => `<th>${f}</th>`).join('') + '<th>Action</th></tr>';
+  data.forEach(r => {
+    html += '<tr>' + fields.map(f => `<td>${r[f]||''}</td>`).join('') + `<td><button class="btn btn-sm btn-ghost" onclick="editRecord('${collection}','${r.id}')">Edit</button></td></tr>`;
+  });
+  html += '</table>';
+  return html;
+}
+
+function addRecord(collection) {
+  const modal = document.getElementById('modal');
+  const content = document.getElementById('modal-content');
+  content.innerHTML = `<h3>Add ${collection.slice(0,-1)}</h3><p class="muted small">Feature available in next update. Data saves automatically when submitted via website forms.</p><div class="modal-actions"><button class="btn btn-secondary" onclick="closeModal()">Close</button></div>`;
+  modal.classList.add('open');
+}
+
+function editRecord(collection, id) {
+  const data = DB.read(collection);
+  const r = data.find(x => x.id === id);
+  if (!r) return;
+  const modal = document.getElementById('modal');
+  const content = document.getElementById('modal-content');
+  let fields = '';
+  for (const [k, v] of Object.entries(r)) {
+    if (k === 'id' || k === 'createdAt' || k === 'updatedAt') continue;
+    fields += `<label>${k}<input id="edit-${k}" value="${v||''}"></label>`;
+  }
+  content.innerHTML = `<h3>Edit ${collection.slice(0,-1)}</h3><form class="form" onsubmit="saveEdit(event,'${collection}','${id}')">${fields}<div class="modal-actions"><button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button><button type="submit" class="btn btn-primary">Save</button></div></form>`;
+  modal.classList.add('open');
+}
+
+function saveEdit(e, collection, id) {
+  e.preventDefault();
+  const data = DB.read(collection);
+  const r = data.find(x => x.id === id);
+  if (r) {
+    for (const key of Object.keys(r)) {
+      if (key === 'id' || key === 'createdAt') continue;
+      const el = document.getElementById('edit-' + key);
+      if (el) r[key] = el.value;
+    }
+    r.updatedAt = new Date().toISOString();
+    DB.write(collection, data);
+  }
+  closeModal();
+  crmView(collection);
+}
+
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+
+// Close modal on overlay click
+document.getElementById('modal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+</script>
+</body>
+</html>
